@@ -16,17 +16,26 @@ from discord.ext import commands
 import json
 bot = commands.Bot(command_prefix=commands.when_mentioned_or('*'),description="The revamped dat banana bot made by dat banana boi#1982.\n\nHelp Commands",owner_id=277981712989028353)
 bot.remove_command("help")
-bot.load_extension("cogs.math")
-bot.load_extension("cogs.mod")
-bot.load_extension("cogs.utility")
-bot.load_extension("cogs.fun")
-bot.load_extension("cogs.info")
-bot.load_extension("cogs.developer")
-bot.load_extension("cogs.cr")
-bot.load_extension("cogs.help")
-bot.load_extension("cogs.coc")
+
+cogs = [
+        "cogs.math",
+        "cogs.mod",
+        "cogs.utility",
+        "cogs.fun",
+        "cogs.info",
+        "cogs.developer",
+        "cogs.cr",
+        "cogs.help",
+        "cogs.coc"
+    ]
+
 #bot.load_extension("cogs.lol")
 
+for ext in cogs:
+    print(f"Loading {ext}...")
+    bot.load_extension(ext)
+
+print(f"Found {len(cogs)} extensions. Running...")
 
 
 def cleanup_code(content):
